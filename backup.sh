@@ -18,7 +18,7 @@ LOG_FILE="/path/to/save/logs/percona_log.txt"
 innobackupex --user="$DB_USER" --password="$DB_PASSWORD" "$BACKUP_PATH" >&"${LOG_FILE}"
 
 # Check the status of the backup
-BACKUP_STATUS=$(grep 'completed OK!' "${LOG_FILE}" | wc -l)
+BACKUP_STATUS=$(grep 'NOTE: Backup successful' "${LOG_FILE}" | wc -l)
 
 if [ "$BACKUP_STATUS" -eq 2 ]; then
     # If backup is successful, notify via email
